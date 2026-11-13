@@ -1,21 +1,32 @@
-# Colab 一键推理脚本合集
-Google Colab 一键推理笔记本，搭配 cloudflared 隧道，对接 Cherry Studio 使用。
+# Notebook 一键推理脚本合集
 
-[![Qwen2.5 vLLM](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/qwen2.5_vllm.ipynb)
-[![Ollama Qwen3.5](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/ollama_qwen3.5.ipynb)
+本仓库存放 `.ipynb` GPU推理笔记本，适配 Google Colab、Kaggle Notebook 两个平台，脚本内置 cloudflared 隧道，生成公网API，对接 Cherry Studio 使用。
+
+> 注意：文件后缀都是 `.ipynb`，但环境不一样，**不要跨平台混用脚本**
+> ✅ Colab脚本 → Colab打开运行
+> ✅ Kaggle脚本 → Kaggle打开运行
 
 ## 目录
-- `ollama_qwen3.5.ipynb`
-  Ollama + cloudflared，内置 Qwen3.5-9B、Qwen3-VL-8B，GGUF 量化，单用户速度快
-- `qwen2.5_vllm.ipynb`
-  vLLM + AWQ 量化 + cloudflared，支持工具调用，适合多并发访问
+### Google Colab
+- ollama_qwen3.5.ipynb：Ollama后端｜Qwen3.5 9B + Qwen3-VL 8B
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/notebook/blob/main/ollama_qwen3.5.ipynb)
 
-## 使用方法
-1. 点击上方对应的 Colab 徽章，打开笔记本
-2. 运行时 → 更改运行时类型 → 硬件加速器选择 GPU（T4）
-3. 依次执行全部单元格
-4. 复制 cloudflared 公网地址，填入 Cherry Studio 的接口地址
+- qwen2.5_vllm.ipynb：vLLM后端｜Qwen2.5推理
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/notebook/blob/main/qwen2.5_vllm.ipynb)
 
-## 实测说明
-- Ollama GGUF：T4 上单聊速度 40～50 token/s，单用户聊天体验更好
-- vLLM AWQ：携带 `--enforce-eager` 参数稳定性高，预热后稳定约 20 token/s；移除该参数速度上限更高，但首次提问会编译卡顿，CUDA 报错风险上升
+### Kaggle Notebook
+- kaggle_llama_qwen3.6.ipynb：Kaggle专用｜Llama / Qwen3.6推理
+[![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ai-ask/notebook/blob/main/kaggle_llama_qwen3.6.ipynb)
+
+## 使用说明
+1. 点对应按钮跳转至对应平台
+2. 运行单元格，等待输出cloudflared隧道地址
+3. Cherry Studio 分开新建服务：
+   - Ollama原生接口：地址不加 `/v1`
+   - vLLM兼容接口：地址末尾带上 `/v1`
+4. API密钥填任意占位字符即可，默认不校验
+
+## 注意事项
+1. Colab、Kaggle的GPU配额、时长限制互相独立
+2. 脚本为前台常驻模式，关闭页面服务就终止
+3. 不要把Colab脚本丢去Kaggle跑，反之亦然
