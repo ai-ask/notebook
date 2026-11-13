@@ -24,7 +24,7 @@
 >
 > 📝 Kaggle 运行前置准备步骤（必须先做，再运行代码）
 > 1. 打开笔记本，点击右侧【Input】，点【Add input】
-> 2. 切换到【Datasets】标签，在搜索框输入：`tahsinekagolasalami`
+> 2. 切换到【Datasets】标签，在搜索框输入：`tahsinekajolasalami`
 > 3. 在搜索结果里勾选添加这两项：
 >    - Qwen3.6-35B-A3B-DGUUF 模型文件
 >    - llama-cpp-bin 依赖包
