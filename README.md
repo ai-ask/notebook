@@ -15,25 +15,28 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/notebook/blob/main/colab_qwen2.5_vllm.ipynb)
 
 ### Kaggle Notebook
-- kaggle_llama_qwen3.6.ipynb：Kaggle专用｜LLMByAPPSTOY，Qwen3.6 / Llama 推理
-> 💡 说明：脚本运行完成输出的cloudflared隧道地址，就是网页聊天地址，浏览器直接打开对话；
-> 日志里会单独给出 OpenAI endpoint（自带 `/v1`），**直接复制这条带/v1的链接填入Cherry Studio**，不需要额外加 /api；
+- kaggle_llama_qwen3.6.ipynb：Kaggle专用｜Llama / Qwen3.6推理
+> 💡 说明：脚本运行完成输出的cloudflared隧道地址，就是 **Llama UI（Open WebUI）网页聊天地址**，直接浏览器打开就能网页对话；
+> Cherry Studio接入有两种地址写法，任选其一：
+> ① 网关写法（很多主播在用，不用加v1）：隧道地址
+> ② 标准OpenAI兼容写法：隧道地址 + `/v1`
 >
-> API密钥用法：
-> 本项目默认无鉴权，Cherry Studio密钥框不能留空，填写 `none` 作为占位即可。
+> API密钥两种用法：
+> ① 开启鉴权：在Open WebUI后台新建API密钥，Cherry Studio填写完全相同密钥；
+> ② 免鉴权（推荐自用）：后台**不创建任何API密钥**，服务自动放行；Cherry Studio密钥框不能留空，统一填写 `none` 作为占位即可。
 [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ai-ask/notebook/blob/main/kaggle_llama_qwen3.6.ipynb)
 
 ## 使用说明
 1. 点对应按钮跳转至对应平台
-2. 运行单元格，等待输出cloudflared隧道地址与API endpoint
+2. 运行单元格，等待输出cloudflared隧道地址
 3. Cherry Studio 分开新建服务：
    - Colab Ollama原生接口：地址不加 `/v1`，密钥填任意占位字符
    - Colab vLLM兼容接口：地址末尾带上 `/v1`，密钥填任意占位字符
-   - Kaggle LLMByAPPSTOY：直接复制日志中带 `/v1` 的endpoint；密钥填 `none` 占位
+   - Kaggle Llama UI：`https://xxx.trycloudflare.com/v1`；密钥和网页后台保持一致，本后端默认不校验密钥则Cherry填 `none` 占位
 4. Kaggle脚本的隧道地址同时兼具【网页聊天】和【API调用】两种能力
 
 ## 注意事项
 1. Colab、Kaggle的GPU配额、时长限制互相独立
 2. 脚本为前台常驻模式，关闭页面服务就终止
 3. 不要把Colab脚本丢去Kaggle跑，反之亦然
-4. `none` 只是Cherry Studio的占位文本，本后端默认不校验密钥
+4. 免鉴权模式下，`none` 只是Cherry Studio的占位文本，不需要在Open WebUI后台填写
