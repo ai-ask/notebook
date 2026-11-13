@@ -7,12 +7,6 @@ Google Colab 一键推理笔记本，搭配 cloudflared 隧道，对接 Cherry S
 ## 目录
 - `ollama-qwen35.ipynb`
   Ollama + cloudflared，内置 Qwen3.5-9B、Qwen3-VL-8B，GGUF 量化，单用户速度快
-- `ollama-single.ipynb`
-  轻量版，仅加载单个模型
-- `ollama-ngrok.ipynb`
-  备选隧道方案（ngrok）
-- `ollama-debug.ipynb`
-  端口、隧道排错调试脚本
 - `qwen25-vllm.ipynb`
   vLLM + AWQ 量化 + cloudflared，支持工具调用，适合多并发访问
 
