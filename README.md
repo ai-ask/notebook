@@ -1,29 +1,26 @@
-# wellcaom colab
-Personal collection of Google Colab notebooks.
-Main focus: Ollama one-click inference with cloudflared tunnel, connect to Cherry Studio.
+# Colab 一键推理脚本合集
+收集 Google Colab 一键运行笔记本，搭配 cloudflared 隧道，对接 Cherry Studio 使用。
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/qwen2.5_vllm_ipynb.ipynb)
+[![在 Colab 中打开](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/qwen2.5-vllm.ipynb)
 
-## Contents
-- `ollama-qwen3.5-9b-vl.ipynb`
-  Main script: Ollama + cloudflared, qwen3.5:9b + qwen3-vl:8b
+## 目录
+- `ollama-qwen3.5-9b-v1.ipynb`
+  主脚本：Ollama + cloudflared，Qwen3.5-9B + Qwen3-V1-8B
 - `ollama-single.ipynb`
-  Lightweight version, single model
+  轻量版，仅加载单个模型
 - `ollama-ngrok.ipynb`
-  Alternative tunnel
+  备选隧道方案（ngrok）
 - `ollama-debug.ipynb`
-  Diagnostics for port & tunnel
+  端口、隧道排错调试脚本
+- `qwen2.5-vllm.ipynb`
+  vLLM + AWQ 量化 + cloudflared，支持工具调用，适合多并发访问
 
-## Usage
-1. Click the badge above to open notebook in Colab
-2. Runtime → Change runtime type → GPU (T4)
-3. Run all cells
-4. Copy the cloudflared public URL, paste into Cherry Studio Base URL
+## 使用方法
+1. 点击上方 Colab 徽章，打开笔记本
+2. 运行时 → 更改运行时类型 → 硬件加速器选择 GPU（T4）
+3. 依次执行全部单元格
+4. 复制 cloudflared 公网地址，填入 Cherry Studio 的接口地址
 
-## Docs
-- [Cherry Studio Config Guide](docs/cherry-studio.md)
-- [FAQ](docs/faq.md)
-
-## Notes
-- Colab session will timeout automatically
-- Cloudflared tunnel link changes on every restart
+## 实测说明
+- Ollama GGUF：T4 上单聊速度 40～50 token/s，单用户聊天体验更好
+- vLLM AWQ：携带 `--enforce-eager` 参数稳定性高，预热后稳定约 20 token/s；移除该参数速度上限更高，但首次提问会编译卡顿，CUDA 报错风险上升
