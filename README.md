@@ -1,13 +1,13 @@
 # Colab 一键推理脚本合集
 Google Colab 一键推理笔记本，搭配 cloudflared 隧道，对接 Cherry Studio 使用。
 
-[![Qwen2.5 vLLM](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/qwen25-vllm.ipynb)
-[![Ollama Qwen3.5](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/ollama-qwen35.ipynb)
+[![Qwen2.5 vLLM](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/qwen2.5-vllm.ipynb)
+[![Ollama Qwen3.5](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/ollama-qwen3.5.ipynb)
 
 ## 目录
-- `ollama-qwen35.ipynb`
+- `ollama-qwen3.5.ipynb`
   Ollama + cloudflared，内置 Qwen3.5-9B、Qwen3-VL-8B，GGUF 量化，单用户速度快
-- `qwen25-vllm.ipynb`
+- `qwen2.5-vllm.ipynb`
   vLLM + AWQ 量化 + cloudflared，支持工具调用，适合多并发访问
 
 ## 使用方法
