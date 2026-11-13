@@ -1,8 +1,8 @@
-# colab
+# wellcaom colab
 Personal collection of Google Colab notebooks.
 Main focus: Ollama one-click inference with cloudflared tunnel, connect to Cherry Studio.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hefung/colab/blob/main/notebooks/ollama-qwen3.5-9b-vl.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ai-ask/colab/blob/main/notebooks/ollama-qwen3.5-4b.ipynb)
 
 ## Contents
 - `ollama-qwen3.5-9b-vl.ipynb`
